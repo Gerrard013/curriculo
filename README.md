@@ -1,1 +1,1 @@
-# curriculo
+# currículo Gerrard
