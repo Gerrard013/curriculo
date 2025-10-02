@@ -1,272 +1,190 @@
-/* VARIÁVEIS DE COR E TEMA */
-:root {
-    --cor-principal: #00bcd4; /* Turquesa */
-    --cor-secundaria: #222; /* Fundo do Header/Footer */
-    --fundo-pagina: #f4f4f9; /* Fundo Geral Claro */
-    --fundo-secao: #fff; /* Fundo das Seções */
-    --texto-padrao: #333;
-    --fundo-card-claro: #fafafa;
-    --sombra-padrao: 0 4px 10px rgba(0,0,0,0.1);
-  }
-  
-  /* DARK MODE */
-  body.dark-mode {
-    --cor-principal: #00bcd4;
-    --cor-secundaria: #111;
-    --fundo-pagina: #1c1c1c; 
-    --fundo-secao: #2c2c2c; 
-    --texto-padrao: #f0f0f0;
-    --fundo-card-claro: #3a3a3a;
-    --sombra-padrao: 0 4px 10px rgba(0,0,0,0.5);
-  }
-  
-  /* RESET BÁSICO */
-  * {
-      margin: 0;
-      padding: 0;
-      box-sizing: border-box;
-  }
+/* MENU FIXO - VERSÃO ATUALIZADA */
+header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    background: var(--cor-secundaria);
+    color: #fff;
+    padding: 15px 0;
+    z-index: 1000;
+    box-shadow: 0 2px 10px rgba(0,0,0,0.1);
+}
+
+.header-content {
+    max-width: 1200px;
+    margin: 0 auto;
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    padding: 0 20px;
+    position: relative;
+}
+
+.logo h2 {
+    color: #fff;
+    font-size: 1.5rem;
+}
+
+/* Menu de navegação para desktop */
+header nav ul {
+    display: flex;
+    list-style: none;
+    gap: 30px;
+}
+
+header nav ul li a {
+    color: #fff;
+    text-decoration: none;
+    font-weight: bold;
+    transition: color 0.3s, transform 0.3s;
+    padding: 8px 12px;
+    border-radius: 5px;
+}
+
+header nav ul li a:hover {
+    color: var(--cor-principal);
+    background: rgba(255, 255, 255, 0.1);
+    transform: translateY(-2px);
+}
+
+/* BOTÃO DE TEMA ATUALIZADO */
+#toggle-theme-btn {
+    background: none;
+    border: 2px solid #fff;
+    color: #fff;
+    padding: 8px 12px;
+    border-radius: 50%;
+    cursor: pointer;
+    transition: all 0.3s;
+    font-size: 1.1rem;
+}
+
+#toggle-theme-btn:hover {
+    background: rgba(255, 255, 255, 0.1);
+    border-color: var(--cor-principal);
+    color: var(--cor-principal);
+    transform: scale(1.1);
+}
+
+/* MENU HAMBURGER - OCULTO NO DESKTOP */
+.hamburger {
+    display: none;
+    flex-direction: column;
+    background: none;
+    border: none;
+    cursor: pointer;
+    padding: 5px;
+    width: 30px;
+    height: 25px;
+    position: relative;
+}
+
+.hamburger span {
+    width: 100%;
+    height: 3px;
+    background: #fff;
+    margin: 3px 0;
+    transition: 0.3s;
+    border-radius: 2px;
+}
+
+/* RESPONSIVIDADE - MOBILE FIRST APPROACH */
+@media (max-width: 768px) {
+    body {
+        padding-top: 60px;
+    }
     
-  body {
-      font-family: "Segoe UI", Tahoma, Geneva, Verdana, sans-serif;
-      line-height: 1.6;
-      color: var(--texto-padrao);
-      background-color: var(--fundo-pagina);
-      padding-top: 70px;
-      transition: background-color 0.5s, color 0.5s; 
-  }
+    .header-content {
+        padding: 0 15px;
+    }
     
-  /* MENU FIXO */
-  header {
-      position: fixed;
-      top: 0;
-      left: 0;
-      width: 100%;
-      background: var(--cor-secundaria);
-      color: #fff;
-      padding: 15px 0;
-      z-index: 1000;
-      display: flex;
-      justify-content: space-around;
-      align-items: center;
-  }
+    /* Mostra o hamburger no mobile */
+    .hamburger {
+        display: flex;
+        z-index: 1001;
+    }
     
-  header nav ul {
-      display: flex;
-      justify-content: center;
-      list-style: none;
-  }
-    
-  header nav ul li {
-      margin: 0 20px;
-  }
-    
-  header nav ul li a {
-      color: #fff;
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s, transform 0.3s, text-shadow 0.3s;
-  }
-    
-  header nav ul li a:hover {
-      color: var(--cor-principal);
-      transform: translateY(-2px);
-      text-shadow: 0 0 5px var(--cor-principal);
-  }
-  
-  /* BOTÃO DE TEMA */
-  #toggle-theme-btn {
-      background: none;
-      border: 2px solid #fff;
-      color: #fff;
-      padding: 8px 12px;
-      border-radius: 50%;
-      cursor: pointer;
-      margin-right: 20px;
-      transition: background 0.3s, border-color 0.3s;
-  }
-  
-  #toggle-theme-btn:hover {
-      background: rgba(255, 255, 255, 0.1);
-      border-color: var(--cor-principal);
-      color: var(--cor-principal);
-  }
-    
-  /* SEÇÕES */
-  section {
-      max-width: 900px;
-      margin: 40px auto;
-      padding: 20px;
-      background: var(--fundo-secao);
-      border-radius: 12px;
-      box-shadow: var(--sombra-padrao);
-      transition: all 0.5s ease-out;
-  }
-    
-  section h1, section h2 {
-      color: var(--cor-secundaria); 
-      margin-bottom: 15px;
-      transition: color 0.5s;
-  }
-  
-  body.dark-mode section h1, body.dark-mode section h2 {
-      color: var(--cor-principal);
-  }
-    
-  /* FOTO PERFIL */
-  .foto-perfil {
-      width: 150px;
-      height: 150px;
-      border-radius: 50%;
-      display: block;
-      margin: 15px auto;
-      border: 3px solid var(--cor-principal);
-  }
-    
-  /* CARDS DE PROJETO/FORMAÇÃO/EXPERIÊNCIA (Com hover) */
-  .card, .formacao-item {
-      background: var(--fundo-card-claro); 
-      padding: 20px;
-      border-radius: 10px;
-      margin-top: 15px;
-      box-shadow: 0 3px 8px rgba(0,0,0,0.1);
-      /* Transição para os efeitos de hover */
-      transition: transform 0.2s, background 0.5s, box-shadow 0.5s; 
-  }
-  
-  /* HOVER APLICADO AOS CARDS E FORMAÇÃO/EXPERIÊNCIA */
-  .card:hover, .formacao-item:hover {
-      /* Efeito de zoom */
-      transform: scale(1.03); 
-      cursor: pointer;
-  }
-  
-  /* NOVO CÓDIGO: EFEITO DE COR NOS TÍTULOS DOS CARDS (Formação, Experiência, Projetos) */
-  .card:hover h3, 
-  .formacao-item:hover h3 {
-      color: var(--cor-principal); /* Mudar cor do título para Turquesa */
-      text-shadow: 0 0 8px rgba(0, 188, 212, 0.5); /* Efeito de brilho */
-      transition: color 0.3s ease-out, text-shadow 0.3s ease-out; /* Transição suave */
-  }
-  
-  
-  /* LISTA DE HABILIDADES COM EFEITO */
-  #habilidades ul {
-      list-style: none; /* Remove os squares */
-      padding-left: 0;
-  }
-  
-  #habilidades ul li {
-      padding: 10px 15px;
-      margin-bottom: 10px;
-      border-left: 5px solid var(--cor-principal); 
-      border-radius: 4px;
-      background-color: var(--fundo-card-claro);
-      box-shadow: 0 2px 5px rgba(0, 0, 0, 0.05);
-      /* Transição para os efeitos de hover */
-      transition: transform 0.2s, box-shadow 0.2s, background-color 0.5s; 
-  }
-  
-  /* HOVER APLICADO ÀS HABILIDADES */
-  #habilidades ul li:hover {
-      /* Efeito de deslize para a direita */
-      transform: translateX(5px); 
-      box-shadow: 0 4px 10px rgba(0, 0, 0, 0.15); 
-      cursor: pointer;
-  }
-  
-  /* NOVO CÓDIGO: EFEITO DE COR NO TEXTO DAS HABILIDADES */
-  #habilidades ul li strong {
-      color: var(--texto-padrao);
-      transition: color 0.5s; /* Transição suave para a cor base no tema */
-  }
-  
-  #habilidades ul li:hover strong {
-      color: var(--cor-principal); /* Mudar cor do texto para Turquesa */
-      text-shadow: 0 0 5px rgba(0, 188, 212, 0.3); /* Efeito de brilho sutil */
-      transition: color 0.3s ease-out, text-shadow 0.3s ease-out;
-  }
-    
-  /* RODAPÉ */
-  footer {
-      text-align: center;
-      padding: 20px;
-      margin-top: 30px;
-      background: var(--cor-secundaria);
-      color: #fff;
-      transition: background 0.5s;
-  }
-  
-  /* LINKS DE CONTATO COM HOVER */
-  #contato a {
-      color: var(--cor-principal);
-      text-decoration: none;
-      font-weight: bold;
-      transition: color 0.3s, text-shadow 0.3s;
-  }
-  
-  #contato a:hover {
-      text-decoration: underline;
-      text-shadow: 0 0 5px rgba(0, 188, 212, 0.5);
-  }
-    
-  /* RESPONSIVIDADE */
-  @media (max-width: 768px) {
-      header {
-          flex-direction: column;
-          padding-bottom: 10px;
-      }
-      header nav ul {
+    /* Esconde o menu normal no mobile */
+    header nav ul {
+        position: fixed;
+        top: 0;
+        right: -100%;
+        width: 70%;
+        height: 100vh;
+        background: var(--cor-secundaria);
         flex-direction: column;
-        padding: 10px 0;
-      }
-      
-      header nav ul li {
-        margin: 5px 0;
-      }
-  
-      /* Reposiciona o botão do tema */
-      #toggle-theme-btn {
-          position: absolute;
-          top: 10px;
-          right: 10px;
-      }
+        justify-content: center;
+        align-items: center;
+        gap: 30px;
+        transition: right 0.3s ease-in-out;
+        box-shadow: -5px 0 15px rgba(0,0,0,0.3);
+    }
     
-      section {
-        margin: 20px;
-      }
-  }
-  
-  /* ANIMAÇÕES DE SCROLL (Fade-in) */
-  section {
-      opacity: 0;
-      transform: translateY(50px);
-      transition: all 0.6s ease-out;
-  }
+    header nav ul.active {
+        right: 0;
+    }
     
-  section.mostrar {
-      opacity: 1;
-      transform: translateY(0);
-  }
-  
-  /* EFEITO DE HOVER PARA O NOME NA SEÇÃO 'SOBRE MIM' */
-  #sobre h1 {
-      transition: color 0.3s ease-out, transform 0.3s ease-out, text-shadow 0.3s ease-out; 
-      cursor: pointer;
-      display: inline-block; 
-  }
-  
-  #sobre h1:hover {
-      color: var(--cor-principal); 
-      transform: translateY(-3px) scale(1.02); 
-      text-shadow: 0 5px 15px rgba(0, 188, 212, 0.5); 
-  }
-  
-  /* Ajuste de cor inicial para o H1 principal */
-  #sobre h1 {
-      color: var(--texto-padrao); 
-  }
-  
-  body.dark-mode #sobre h1 {
-      color: #fff; 
-  }
+    header nav ul li a {
+        font-size: 1.2rem;
+        padding: 15px 30px;
+        display: block;
+        width: 100%;
+        text-align: center;
+    }
+    
+    /* Ajusta a posição do botão de tema */
+    #toggle-theme-btn {
+        position: static;
+        margin-right: 15px;
+    }
+    
+    /* Animação do hamburger para X */
+    .hamburger.active span:nth-child(1) {
+        transform: rotate(45deg) translate(8px, 8px);
+    }
+    
+    .hamburger.active span:nth-child(2) {
+        opacity: 0;
+    }
+    
+    .hamburger.active span:nth-child(3) {
+        transform: rotate(-45deg) translate(7px, -7px);
+    }
+    
+    /* Ajustes nas seções para mobile */
+    section {
+        margin: 20px 15px;
+        padding: 15px;
+    }
+    
+    .foto-perfil {
+        width: 120px;
+        height: 120px;
+    }
+}
+
+/* Para telas muito pequenas */
+@media (max-width: 480px) {
+    .header-content {
+        padding: 0 10px;
+    }
+    
+    .logo h2 {
+        font-size: 1.2rem;
+    }
+    
+    header nav ul {
+        width: 85%;
+    }
+    
+    section {
+        margin: 15px 10px;
+        padding: 12px;
+    }
+    
+    #toggle-theme-btn {
+        padding: 6px 10px;
+        font-size: 1rem;
+    }
+}
